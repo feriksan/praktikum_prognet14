@@ -7,14 +7,36 @@ use Illuminate\Notifications\Notifiable;
 
 class Admin extends Authenticatable
 {
-   protected $guard = 'Admin';
-   protected $table = 'admins';
 
-   protected $fillable = [
-   		'username', 'password',
-   ];
+    use Notifiable;
+    
+    protected $guard ='admin';
+    protected $table = 'admins';
 
-   protected $hidden = [
-   		'password', 'remember_token',
-   ];
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name', 'password',
+    ];
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'password', 'remember_token',
+    ];
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+   // protected $casts = [
+   //     'email_verified_at' => 'datetime',
+   // ];
 }
